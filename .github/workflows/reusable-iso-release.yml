@@ -19,6 +19,11 @@ jobs:
       contents: read
       packages: write
       id-token: write
+    container:
+      image: fedora:${{ matrix.fedora_version }}
+      options: "--privileged"
+      volumes:
+        - "/:/host"
     strategy:
       fail-fast: false
       matrix:
@@ -86,7 +91,6 @@ jobs:
 
           TIMESTAMP="$(date +%Y%m%d)"
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
-
 
       - name: Build ISOs
         uses: ublue-os/isogenerator@1.0.9
