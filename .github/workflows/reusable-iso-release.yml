@@ -12,35 +12,35 @@ concurrency:
     group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-${{ inputs.fedora_version }}
     cancel-in-progress: true
 jobs:
-  build_ublue:
-        name: hwe
-        runs-on: ubuntu-22.04
-        permissions:
-          contents: read
-          packages: write
-          id-token: write
-        strategy:
-          fail-fast: false
-          matrix:
-            fedora_version:
-              - ${{ inputs.fedora_version }}
-            hwe_flavor:
-              - main
-              - asus
-              - surface
-            image_name:
-              - silverblue
-              - kinoite
-              - sericea
-              - onyx
-              - base
-              - lazurite
-              - mate
-              - vauxite
-            nvidia_version:
-              - 0   # No Nvidia drivers (this indicates to only build "main" image target
-              - 470 # Older Nvidia driver
-              - 550 # Latest Nvidia driver (update IS_LATEST_DRIVER below if version changes)
+  build-and-upload-iso:  
+    name: hwe
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        fedora_version:
+          - ${{ inputs.fedora_version }}
+        hwe_flavor:
+          - main
+          - asus
+          - surface
+        image_name:
+          - silverblue
+          - kinoite
+          - sericea
+          - onyx
+          - base
+          - lazurite
+          - mate
+          - vauxite
+        nvidia_version:
+          - 0   # No Nvidia drivers (this indicates to only build "main" image target
+          - 470 # Older Nvidia driver
+          - 550 # Latest Nvidia driver (update IS_LATEST_DRIVER below if version changes)
         exclude:
           # There is currently no Fedora 40 version of mate
           - image_name: mate
