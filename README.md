@@ -1,4 +1,4 @@
-# HWE
+# HWE, now with ISOs
 
 [![build-38](https://github.com/ublue-os/hwe/actions/workflows/build-38.yml/badge.svg)](https://github.com/ublue-os/hwe/actions/workflows/build-38.yml) [![build-39](https://github.com/ublue-os/hwe/actions/workflows/build-39.yml/badge.svg)](https://github.com/ublue-os/hwe/actions/workflows/build-39.yml) [![build-40](https://github.com/ublue-os/hwe/actions/workflows/build-40.yml/badge.svg)](https://github.com/ublue-os/hwe/actions/workflows/build-40.yml)
 
